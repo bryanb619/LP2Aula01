@@ -6,28 +6,66 @@ using System.Threading.Tasks;
 namespace CuteAnimal
 {
     public class Cat
-    {
+    {   
+        // Vars ----------------------------------------------------------------
         private string  _name;
         private int     _energy;
         private Mood    _moodStatus; 
         private Feed    _feedStatus;
 
+        // random class 
+        private Random _random; 
 
-        public Cat(string name, int energy, Mood moodState, Feed feedState)
+        // const
+        private const int _maxEnergy = 100;  
+
+
+        // Constructors --------------------------------------------------------
+
+
+        // 1st contructor 
+        private Cat()
+        {
+
+        }
+
+        // 2nd contructor
+        public Cat(string name, int energy, Mood moodState, Feed feedState) 
+        : this()
         {
             _name       = name;
-            _energy     = energy;
+
+            // 
+
+            if (energy <= 0) _energy = 0;
+
+            else if (energy >= _maxEnergy) _energy = _maxEnergy;
+
+            else { _energy = energy;} 
+
             _moodStatus = moodState;
             _feedStatus = feedState;
         }
 
 
-        // 1st contructor
-
-
-        // 2nd contructor
-
-
         // 3rd contructor
+        public Cat(string name)
+        {
+            //this();
+        }
+
+
+
+        // Getters -------------------------------------------------------------
+
+        public string GetName()
+        {
+            return _name; 
+        }
+
+        public int GetEnergy()
+        {
+            return _energy;
+        }
     }
 }
